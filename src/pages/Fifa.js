@@ -3,6 +3,7 @@ import Certificate from '../components/Certificate'
 import names from '../assets/data/participation'
 import Arrow from '../assets/images/dropdown.svg'
 import {useData} from '../context/dataContext'
+import { useAuth } from '../context/authContext'
 import Button2 from '../components/Button'
 import Participation from '../assets/images/fifa/bg1.svg'
 import Achievement from '../assets/images/fifa/bg2.svg'
@@ -30,6 +31,8 @@ function Fifa() {
     setidx(prev=>-1)
   }
   
+  const {user} = useAuth()
+
   useEffect(() => {
     console.log('setting idx: ',idx);
     setData(prev=>list[idx])
@@ -51,7 +54,7 @@ function Fifa() {
     else setidx(prev=>prev - 1)
   }
   return (
-    <div className='flex flex-row items-center justify-between w-full bg-black/95 overflow-x-hidden'>
+    user && <div className='flex flex-row items-center justify-between w-full bg-black/95 overflow-x-hidden'>
         <div  className='flex items-center justify-center p-5 h-full hover:bg-red-600 w-full' style={{flexBasis:'15%'}}>
         <button  onClick={handlePrevIdx} className='w-full h-1/5 flex items-center justify-center hover:-translate-x-10 transition-transform'>
           <img src={Arrow} className='w-8 rotate-90 '/>

@@ -1,12 +1,13 @@
 import React,{useEffect,useRef,useState} from 'react'
 import Navbar from './Navbar'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import links from '../assets/data/Links'
 import * as XLSX from 'xlsx'
 import {useData} from '../context/dataContext'
 import Button from './Button'
 import Button2 from './Button2'
 import {useLocation} from 'react-router-dom'
+import { useAuth } from '../context/authContext'
 import '../index.css'
 
 function Sidebar() {
@@ -15,7 +16,7 @@ function Sidebar() {
   const {list,setList} = useData()
   const [uploaded, setUploaded] = useState(false)
   const [newFile, setNewFile] = useState(false)
-
+  const {user,setUser} = useAuth()
   const fileType = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.ms-excel']
   const fileRef = useRef()
   
@@ -36,6 +37,7 @@ function Sidebar() {
 }
 
 const location = useLocation()
+const navigate = useNavigate()
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -64,16 +66,21 @@ useEffect(()=>{
 },[excelData])
 
   return (
-    <div className='py-2 px-4 sticky top-0 bg-black w-max h-screen flex flex-col justify-between'>
+    user && <div className='py-2 px-4 sticky top-0 bg-black w-max h-screen flex flex-col justify-between'>
         <Navbar/>
         <div>
-        <div className=' flex flex-col items-center gap-2'>
+        <div className=' flex flex-col items-center gap-2 mb-4'>
         <div className=' relative overflow-hidden flex items-center justify-center'>
         {location.pathname !== '/' && <Button text={'Choose File'}/>}
         <input className='absolute opacity-0 cursor-pointer p-10' ref={fileRef} type={'file'} onChange={handleFile}></input>
         </div>
         {((excelFile!==null && list.length===0) || newFile) && <Button text={'Upload'} onClick={handleSubmit}/>}
         </div>
+        <Button2 text={'Logout'} onClick={()=>{
+           setUser(prev=>false)
+           localStorage.removeItem('user')
+           navigate('/')
+        }}/>
         </div>
     </div>
   )

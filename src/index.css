@@ -52,7 +52,12 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
+}
+
+@media screen and (min-width: 768px){
+  .home{ 
+    background-attachment: fixed;
+  }
 }
 
 .animate-line{
@@ -76,9 +81,16 @@ body{
 .animate-sidebar{
   animation: animate-sidebar 350ms ease-out forwards;
   transition: all 350ms ease-out;
-  animation-delay: 1100ms;
+  /* animation-delay: 1100ms; */
   transform: translateX(-100%);
   display: none;
+}
+
+.animate-input{
+  animation: animate-input 350ms ease-out forwards;
+  transition: all 350ms ease-out;
+  animation-delay: 1100ms;
+  opacity: 0;
 }
 
 @keyframes animate-header{
@@ -123,5 +135,15 @@ body{
   }
 }
 
+@keyframes animate-input{
+  0%{
+    opacity: 0;
+    display: none;
+  }
+  100%{
+    opacity: 1;
+    display: flex;
+  }
+}
 
 @tailwind utilities;
