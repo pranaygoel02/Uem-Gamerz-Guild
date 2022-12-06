@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
+import { DataProvider } from "./context/dataContext";
+import './index.css'
+import Freefire from "./pages/Freefire";
+import {useLocation} from 'react-router-dom'
+import Fifa from "./pages/Fifa";
 
 function App() {
+  // const location = useLocation()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <DataProvider>
+      <Router>
+            <div className={`flex flex-row`}>
+              <Sidebar />
+              <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/freefire" element={<Freefire />} />
+                <Route path="/fifa" element={<Fifa />} />
+                <Route path="*" element={<div>404</div>} />
+              </Routes>
+            </div>
+        </Router>
+        </DataProvider>
+    </>
   );
 }
 
