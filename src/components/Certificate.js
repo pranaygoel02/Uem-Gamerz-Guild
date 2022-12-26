@@ -45,9 +45,9 @@ function Certificate({data,all,bg1,bg2,tournament,date,icon}) {
           <h2 className='font-evil400 text-7xl'><span className='text-orange'>{Name}</span> {Surname}</h2>
           <p className='max-w-lg'>for <span>{data?.Position ? 'securing' : 'participating'}</span> {data?.Position && <span className='text-orange font-bold'>{data?.Position} position</span>} in UEM gamerz guild {tournament} on {date}.</p>
         </div>
-        <div className='flex w-full items-center justify-between max-w-xl mt-16'>
-          <Signature name={'Signatory 1'} designation={'Position 1'}/>
-          <Signature name={'Signatory 2'} designation={'Position 2'}/>
+        <div className='flex w-full items-center justify-evenly max-w-xl'>
+          <Signature name={'Anay Ghosh'} designation={'Position 1'}/>
+          {/* <Signature name={'Signatory 2'} designation={'Position 2'}/> */}
         </div>
         </div>
     </div>
