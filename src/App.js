@@ -9,6 +9,7 @@ import Freefire from "./pages/Freefire";
 import {useLocation} from 'react-router-dom'
 import Fifa from "./pages/Fifa";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Workshop from "./pages/Workshop";
 
 function App() {
   // const location = useLocation()
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home/>} />
                 <Route path="/freefire" element={<ProtectedRoute Component={Freefire}/>} />
                 <Route path="/fifa" element={<ProtectedRoute Component={Fifa}/>} />
+                <Route path="/workshop" element={<ProtectedRoute Component={Workshop}/>} />
                 <Route path="*" element={<div>404</div>} />
               </Routes>
             </div>

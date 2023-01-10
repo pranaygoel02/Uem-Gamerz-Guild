@@ -8,5 +8,9 @@ const links =
     to:'fifa',
     name:"FIFA",
     img:'fifa.png'
+},
+{
+    to: 'workshop',
+    name:'Workshop'
 }]
 export default links

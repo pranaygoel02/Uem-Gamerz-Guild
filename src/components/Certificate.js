@@ -1,7 +1,6 @@
 import React,{useEffect, useRef} from 'react'
 import {exportComponentAsPNG } from 'react-component-export-image';
 import Button from './Button2';
-import UGG from '../assets/images/logo.png'
 import Cross from '../assets/images/cross.svg'
 import '../index.css'
 import Box from './Box';
@@ -9,7 +8,7 @@ import Box2 from './Box2';
 import Signature from './Signature';
 import {useData} from '../context/dataContext'
 
-function Certificate({data,all,bg1,bg2,tournament,date,icon}) {
+function Certificate({ugg_variant,data,all,bg1,bg2,tournament,date,icon,color,hex,font,name_size,certificate_size}) {
   // const {downloadAll,setDownloadAll} = useData()
 
   const certiRef = useRef()
@@ -32,22 +31,21 @@ function Certificate({data,all,bg1,bg2,tournament,date,icon}) {
         <img draggable='false' src={data?.Position ? bg1 : bg2} className='h-screen'></img>
         <div className='flex flex-col items-center justify-evenly h-full w-full absolute'>
         <div className='flex flex-row items-center gap-5'>
-          <img className='w-32' src={UGG}/>
+          <img className='w-32' src={ugg_variant}/>
           <img className='w-7' src={Cross}/>
           <img className='h-16 ml-3' src={icon}/>
         </div>
-        <div className='flex flex-col items-center -mt-6'>
-          <h2 className='font-evil400 text-white text-7xl uppercase'>Certificate of</h2>
-          <Box text = {data?.Position  ? 'Achievement' : 'Participation'}/>
+        <div className='flex flex-col items-center gap-2 -mt-6'>
+          <h2 className={`font-${font} text-white text-${certificate_size}xl uppercase`}>Certificate of</h2>
+          <Box hex={hex} text = {data?.Position  ? 'Achievement' : 'Participation'}/>
         </div>
         <div className='uppercase text-white flex font-poppins flex-col items-center max-w-2xl text-lg text-center gap-8' style={{letterSpacing:'auto'}}>
           <p>This certificate has been awarded to</p>
-          <h2 className='font-evil400 text-7xl'><span className='text-orange'>{Name}</span> {Surname}</h2>
-          <p className='max-w-lg'>for <span>{data?.Position ? 'securing' : 'participating'}</span> {data?.Position && <span className='text-orange font-bold'>{data?.Position} position</span>} in UEM gamerz guild {tournament} on {date}.</p>
+          <h2 className={`font-${font} text-${name_size}xl`}><span className={`text-${color}`}>{Name}</span> {Surname}</h2>
+          <p className='max-w-2xl'>for <span>{data?.Position ? 'securing' : 'participating'}</span> {data?.Position && <span className={`text-${color} font-bold`}>{data?.Position} position</span>} in UEM gamerz guild <span>{tournament}</span> on {date}.</p>
         </div>
-        <div className='flex w-full items-center justify-evenly max-w-xl'>
-          <Signature name={'Anay Ghosh'} designation={'Position 1'}/>
-          {/* <Signature name={'Signatory 2'} designation={'Position 2'}/> */}
+        <div className={`flex w-full items-center justify-evenly max-w-xl text-${color}`}>
+          <Signature name={'Anay Ghosh'} designation={'Position 1'} underline_color={color} color={'white'}/>
         </div>
         </div>
     </div>

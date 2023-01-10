@@ -9,6 +9,7 @@ import Participation from '../assets/images/freefire/bg1.svg'
 import Achievement from '../assets/images/freefire/bg2.svg'
 import FreeFire from '../assets/images/freefire.png'
 import Pagination from '../components/Pagination'
+import UGG from '../assets/images/logo.png'
 
 function Freefire() {
   const [idx, setidx] = useState(0)
@@ -59,7 +60,7 @@ function Freefire() {
           <img src={Arrow} className='w-8 rotate-90 '/>
         </button>
         </div>
-        <Certificate data={data} all={downloadAll} bg2={Participation} bg1={Achievement} tournament={'free fire max tournament'} date={'8th december, 2022'} icon={FreeFire}/>
+        <Certificate ugg_variant={UGG} data={data} all={downloadAll} bg2={Participation} bg1={Achievement} tournament={'free fire max tournament'} date={'8th december, 2022'} icon={FreeFire} color='orange' hex={'#E87914'} font='evil400' certificate_size={7} name_size={7}/>
         <div  className='flex items-center justify-center p-5 h-full hover:bg-red-600 w-full' style={{flexBasis:'15%'}}>
         <button  onClick={handleNextIdx} className='w-full h-1/5 flex items-center justify-center hover:translate-x-10 transition-transform'>
           <img src={Arrow} className='w-8 -rotate-90 '/>

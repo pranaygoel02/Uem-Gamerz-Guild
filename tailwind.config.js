@@ -17,6 +17,7 @@ module.exports = {
       },
       colors:{
         orange: '#E87914',
+        workshop_primary: '#e8190f'
       }
     },
   },

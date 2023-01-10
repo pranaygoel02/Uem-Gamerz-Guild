@@ -10,7 +10,7 @@ function Navbar() {
       <img draggable='false' src={Logo} alt='logo' className='w-20 h-20'/>
     </Link>
     <div className='flex flex-col items-center justify-center w-full gap-8'>
-    {links.map((link, idx) => <Link to={link.to}><img className=' text-white h-8 hover:translate-x-2 transition-transform' src={require(`../assets/images/${link.img}`)}></img></Link>)}
+    {links.map((link, idx) => <Link className='text-white' to={link.to}>{link?.img ? <img className=' text-white h-8 hover:translate-x-2 transition-transform' alt={link?.name} src={require(`../assets/images/${link?.img}`)}></img> : <p>{link?.name}</p>}</Link>)}
     </div>
     </div>
   )

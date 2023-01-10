@@ -5,13 +5,12 @@ import Arrow from '../assets/images/dropdown.svg'
 import {useData} from '../context/dataContext'
 import { useAuth } from '../context/authContext'
 import Button2 from '../components/Button'
-import Participation from '../assets/images/fifa/bg1.svg'
-import Achievement from '../assets/images/fifa/bg2.svg'
-import fifa from '../assets/images/fifa.png'
+import Background from '../assets/images/workshop/bg1.png'
+import ureckon from '../assets/images/workshop/ureckon.png'
 import Pagination from '../components/Pagination'
-import UGG from '../assets/images/logo.png'
+import UGG from '../assets/images/logo-white.png'
 
-function Fifa() {
+function Workshop() {
   const [idx, setidx] = useState(0)
   const {list,setList} = useData()
   const [data, setData] = useState(null)
@@ -61,7 +60,7 @@ function Fifa() {
           <img src={Arrow} className='w-8 rotate-90 '/>
         </button>
         </div>
-        <Certificate ugg_variant={UGG} data={data} all={downloadAll} bg2={Participation} bg1={Achievement} tournament={'fifa 22 tournament'} date={'8th december, 2022'} icon={fifa} color='orange' hex={'#E87914'} font='evil400' certificate_size={7} name_size={7}/>
+        <Certificate ugg_variant={UGG} data={data} all={downloadAll} bg2={Background} tournament={'game development workshop in collaboration with ureckon'} date={'7th january, 2023'} icon={ureckon} color='workshop_primary' hex='#e8190f' font='pilot' certificate_size={4} name_size={5}/>
         <div  className='flex items-center justify-center p-5 h-full hover:bg-red-600 w-full' style={{flexBasis:'15%'}}>
         <button  onClick={handleNextIdx} className='w-full h-1/5 flex items-center justify-center hover:translate-x-10 transition-transform'>
           <img src={Arrow} className='w-8 -rotate-90 '/>
@@ -76,4 +75,4 @@ function Fifa() {
   )
 }
 
-export default Fifa
+export default Workshop
